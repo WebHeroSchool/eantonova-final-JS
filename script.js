@@ -72,7 +72,6 @@ function play() {
 
     // получаем случайное число для бага
     const bug = random(1, cardsAmount + 1);
-    console.log(bug);
 
     const wrapCards = document.querySelectorAll('.cards__wrap');
 
