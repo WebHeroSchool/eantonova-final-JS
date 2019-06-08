@@ -27,27 +27,30 @@ function random(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 };
 
+function reloadGame() {
+    field.innerHTML = '';
+    menu.classList.remove('hidden');
+    canPlay = true;
+};
+
 // функция выбора карты
 function pickCard(bug) {
-    if(canPlay === true) {
-        let cardPicture = this.querySelectorAll('.cards__front')[0];
+    if (canPlay === true) {
+        let cardPicture = this.querySelector('.cards__front');
         if (Number(this.getAttribute('id')) === bug) {
             cardPicture.classList.replace('cards__front', 'cards__bug');
         }
         this.classList.add('active');
         canPlay = false;
     } else {
-    // для перезапуска игры
-        field.innerHTML = '';
-        menu.classList.remove('hidden');
-        canPlay = true;
+        reloadGame();
     }
 };
 
 function play() {
     // скрываем меню, определяем сложность и заполняем поле картами
     menu.classList.add('hidden');
-    const radiobtn = document.querySelectorAll('input[type=radio]:checked')[0];
+    const radiobtn = document.querySelector('input[type=radio]:checked');
     const level = radiobtn.getAttribute('value');
     switch (level) {
         case 'easy':
@@ -63,7 +66,7 @@ function play() {
     
     const cardsAmount = difficulty[level];
     let cards = '';
-    const container = document.getElementsByClassName('cards__container')[0];
+    const container = document.querySelector('.cards__container');
     for(let i = 1; i <= cardsAmount; i++) {
         cards += card.replace('#', i);
     };
