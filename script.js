@@ -33,7 +33,6 @@ function reloadGame() {
     canPlay = true;
 };
 
-// функция выбора карты
 function pickCard(bug) {
     if (canPlay === true) {
         let cardPicture = this.querySelector('.cards__front');
@@ -48,7 +47,6 @@ function pickCard(bug) {
 };
 
 function play() {
-    // скрываем меню, определяем сложность и заполняем поле картами
     menu.classList.add('hidden');
     const radiobtn = document.querySelector('input[type=radio]:checked');
     const level = radiobtn.getAttribute('value');
@@ -72,7 +70,6 @@ function play() {
     };
     container.innerHTML = cards;
 
-    // получаем случайное число для бага
     const bug = random(1, cardsAmount + 1);
 
     const wrapCards = document.querySelectorAll('.cards__wrap');
